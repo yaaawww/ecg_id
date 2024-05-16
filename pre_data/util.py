@@ -1,9 +1,8 @@
 import matplotlib.pyplot as plt
 import matplotlib
 import wfdb
-matplotlib.rc("font",family='WenQuanYi Zen Hei',weight="bold")
 
-def show_plot(sign_1, name1, sign_2, name2):
+def show_plot2(sign_1, name1, sign_2, name2):
     plt.subplot(2, 1, 1)
     plt.ylabel("mv")
     plt.title(name1)

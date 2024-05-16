@@ -1,7 +1,7 @@
-learn/
-__pychche__/
-*/__pychche__/
-.ipynb_checkpoints/
-*/.ipynb_checkpoints/
-data/
+*__pycache__/
+*.ipynb_checkpoints/
+
+ecg_data/
 image/
+Image*
+.vscode

@@ -58,17 +58,38 @@ def gadf(nums, result, id, is_test=False):
         N1 = np.array([resultPAA[1, :]])
         gadf = GramianAngularField(method='difference')
         X_gadf = gadf.fit_transform(N1)
-        # get the save path 
-        save_path = f'../image/test_image/person{id}/{pid}.png' if is_test else f'../image/train_image/person{id}/{pid}.png'
+        # get the save path
+        id = str(id).rjust(2, '0')
+        save_path = f'../image/test_image/{id}/{pid}.png' if is_test else f'../image/train_image/{id}/{pid}.png'
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         plt.imshow(X_gadf[0], cmap='rainbow', origin='lower')
         plt.xticks([])
         plt.yticks([])
         plt.savefig(save_path, bbox_inches='tight')
         plt.close('all')
-        print(f'has loaded picture of person_{id}_{pid}')
+        print(f'has loaded picture of person {id} {pid}')
         pid += 1
 
+def singal_gadf(nums, PAA, interval, id, is_test=False):
+    # PAA降维
+    pid = 1
+    for pos in nums:
+        pos = int(pos)
+        # print(PAA[pos - interval : pos])
+        X = PAA[pos - interval : pos].reshape(1, -1)
+        gadf = GramianAngularField(method='difference')
+        X_gadf = gadf.fit_transform(X)
+        # get the save path
+        id = str(id).rjust(2, '0')
+        save_path = f'../image/test_image/{id}/{pid}.png' if is_test else f'../image/train_image/{id}/{pid}.png'
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        plt.imshow(X_gadf[0], cmap='rainbow', origin='lower')
+        plt.xticks([])
+        plt.yticks([])
+        plt.savefig(save_path, bbox_inches='tight')
+        plt.close('all')
+        print(f'has loaded picture of person {id} {pid}')
+        pid += 1
 
 def test():
     time_points = np.linspace(1, 10000, 10000)  # type array

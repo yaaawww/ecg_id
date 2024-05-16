@@ -33,6 +33,7 @@ def wavelet_denoising(data):
 if __name__ == '__main__':
     rd = util.get_test_data() 
     origin_ecg = rd.p_signal.flatten()[0:7200]
+    print(rd.fs)
     f = int(0.8 * rd.fs)
     f = f if f % 2 == 1 else f + 1
     # give_up_size = int(f / 2)
